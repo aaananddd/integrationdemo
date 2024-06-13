@@ -19,31 +19,37 @@ const RegisterForm = () => {
     >
       <h2 className="mb-20 font-bold text-3xl text-center">Register</h2>
       <div className="mb-15">
-        <label htmlFor="username" className=" flex font-mono items-start block mb-5">
-          Username:
+        <label
+          htmlFor="username"
+          className=" flex font-mono items-start block mb-5"
+        >
+          Email:
         </label>
         <input
-          type="text"
-          id="username"
+          type="email"
+          id="email"
           className={`input w-full p-3 border border-gray-300 rounded-md box-border ${
-            errors.username && "input-error"
+            errors.email && "input-error"
           }`}
-          {...register("username", {
-            required: "Please enter your username",
-            maxLength: {
-              value: 20,
-              message: "Username cannot exceed 20 characters",
+          {...register("email", {
+            required: "Please enter your email",
+            pattern: {
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+              message: "Please enter a valid email address",
             },
           })}
         />
-        {errors.username && (
+        {errors.email && (
           <span className="error-message text-red-500 text-xs">
-            {errors.username.message}
+            {errors.email.message}
           </span>
         )}
       </div>
       <div className="mb-15">
-        <label htmlFor="password" className="flex items-start font-mono mt-5 block mb-5">
+        <label
+          htmlFor="password"
+          className="flex items-start font-mono mt-5 block mb-5"
+        >
           Password:
         </label>
         <input
