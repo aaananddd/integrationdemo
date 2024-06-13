@@ -1,9 +1,5 @@
-// src/components/RegisterForm.js
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-// import "./Header.css";
-import './index.css';
 
 const RegisterForm = () => {
   const {
@@ -16,19 +12,22 @@ const RegisterForm = () => {
     console.log(data);
   };
 
-  const validatePassword = (value) => {
-    return value === getValues("password") || "Passwords do not match";
-  };
-
   return (
-    <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
-      <h2>Register</h2>
-      <div className="form-group">
-        <label htmlFor="username">Username:</label>
+    <form
+      className="w-[400px] mx-auto p-10 border border-gray-300 rounded-md bg-gray-100"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <h2 className="mb-20 font-bold text-3xl text-center">Register</h2>
+      <div className="mb-15">
+        <label htmlFor="username" className=" flex font-mono items-start block mb-5">
+          Username:
+        </label>
         <input
           type="text"
           id="username"
-          className={`input ${errors.username && "input-error"}`}
+          className={`input w-full p-3 border border-gray-300 rounded-md box-border ${
+            errors.username && "input-error"
+          }`}
           {...register("username", {
             required: "Please enter your username",
             maxLength: {
@@ -38,15 +37,21 @@ const RegisterForm = () => {
           })}
         />
         {errors.username && (
-          <span className="error-message">{errors.username.message}</span>
+          <span className="error-message text-red-500 text-xs">
+            {errors.username.message}
+          </span>
         )}
       </div>
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
+      <div className="mb-15">
+        <label htmlFor="password" className="flex items-start font-mono mt-5 block mb-5">
+          Password:
+        </label>
         <input
           type="password"
           id="password"
-          className={`input ${errors.password && "input-error"}`}
+          className={`input w-full p-3 border mb-5 border-gray-300 rounded-md box-border ${
+            errors.password && "input-error"
+          }`}
           {...register("password", {
             required: "Please enter your password",
             minLength: {
@@ -56,17 +61,17 @@ const RegisterForm = () => {
           })}
         />
         {errors.password && (
-          <span className="error-message">{errors.password.message}</span>
+          <span className="error-message text-red-500 text-xs">
+            {errors.password.message}
+          </span>
         )}
       </div>
-      <button type="submit" className="submit-button">
+      <button
+        type="submit"
+        className="submit-button w-full p-3 bg-blue-600 text-white rounded-md cursor-pointer text-lg"
+      >
         Register
       </button>
-      <div className="links">
-        <p>
-          Have an account? <Link to="/login">Login</Link>
-        </p>
-      </div>
     </form>
   );
 };
