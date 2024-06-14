@@ -1,6 +1,6 @@
 // Header.js
 import React from "react";
-import "./Header.css"; 
+import "./Header.css";
 
 const Header = () => {
   return (
@@ -14,7 +14,13 @@ const Header = () => {
             <button className="nav-button">Login</button>
           </li>
           <li className="nav-item">
+            <button className="nav-button">About</button>
+          </li>
+          <li className="nav-item">
             <button className="nav-button">Dashboard</button>
+          </li>
+          <li className="nav-item">
+            <button className="nav-button">Logout</button>
           </li>
         </ul>
       </nav>
