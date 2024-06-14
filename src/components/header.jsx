@@ -27,9 +27,9 @@ const Header = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/register" relative="register">
-              <button className="nav-button">Logout</button>
-            </Link>
+            <button className="nav-button" onClick={() => localStorage.clear()}>
+              Logout
+            </button>
           </li>
         </ul>
       </nav>
