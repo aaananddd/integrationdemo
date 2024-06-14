@@ -7,6 +7,7 @@ import RegisterForm from "./components/Register";
 import LoginForm from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Header from "./components/header";
+import About from "./components/About";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
         element: <LoginForm />,
       },
       {
-        index: true,
+        path: "dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "about",
+        element: <About />
       },
     ],
   },

@@ -18,11 +18,11 @@ const Header = () => {
               <button className="nav-button">Login</button>
             </Link>
           </li>
-          <Link to="/register" relative="register">
+          <Link to="/about" relative="about">
             <button className="nav-button">About</button>
           </Link>
           <li className="nav-item">
-            <Link to="/" relative="dashboard">
+            <Link to="/dashboard" relative="dashboard">
               <button className="nav-button">Dashboard</button>
             </Link>
           </li>
