@@ -1,7 +1,7 @@
+// src/main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Root from "./routes/root";
 import "./index.css";
 import RegisterForm from "./components/Register";
 import LoginForm from "./components/Login";
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "about",
-        element: <About />
+        element: <About />,
       },
     ],
   },

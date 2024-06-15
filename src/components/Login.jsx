@@ -1,5 +1,7 @@
+// src/components/LoginForm.jsx
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const {
@@ -7,9 +9,12 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
+    localStorage.setItem("isLoggedIn", "true");
+    navigate("/dashboard");
   };
 
   return (
@@ -18,10 +23,10 @@ const LoginForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className="mb-10 font-bold text-3xl text-center">Login</h2>
-      <div className="mb-15">
+      <div className="mb-6">
         <label
-          htmlFor="username"
-          className=" flex font-mono items-start block mb-3"
+          htmlFor="email"
+          className="flex font-mono items-start block mb-2"
         >
           Email:
         </label>
@@ -29,7 +34,7 @@ const LoginForm = () => {
           type="email"
           id="email"
           className={`input w-full p-3 border border-gray-300 rounded-md box-border ${
-            errors.email && "input-error"
+            errors.email ? "input-error" : ""
           }`}
           {...register("email", {
             required: "Please enter your email",
@@ -45,18 +50,18 @@ const LoginForm = () => {
           </span>
         )}
       </div>
-      <div className="mb-15">
+      <div className="mb-6">
         <label
           htmlFor="password"
-          className="flex items-start font-mono mt-3 block mb-3"
+          className="flex items-start font-mono block mb-2"
         >
           Password:
         </label>
         <input
           type="password"
           id="password"
-          className={`input w-full p-3 border mb-3 border-gray-300 rounded-md box-border ${
-            errors.password && "input-error"
+          className={`input w-full p-3 border border-gray-300 rounded-md box-border ${
+            errors.password ? "input-error" : ""
           }`}
           {...register("password", {
             required: "Please enter your password",
@@ -76,7 +81,7 @@ const LoginForm = () => {
         type="submit"
         className="submit-button w-full p-3 bg-blue-600 text-white rounded-md cursor-pointer text-lg"
       >
-        Register
+        Login
       </button>
     </form>
   );

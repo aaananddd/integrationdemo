@@ -1,3 +1,4 @@
+// src/components/RegisterForm.jsx
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -5,12 +6,16 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
+    
   };
+
+  const password = watch("password");
 
   return (
     <form
@@ -18,10 +23,10 @@ const RegisterForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className="mb-10 font-bold text-3xl text-center">Register</h2>
-      <div className="mb-15">
+      <div className="mb-6">
         <label
-          htmlFor="username"
-          className=" flex font-mono items-start block mb-3"
+          htmlFor="email"
+          className="flex font-mono items-start block mb-2"
         >
           Email:
         </label>
@@ -29,7 +34,7 @@ const RegisterForm = () => {
           type="email"
           id="email"
           className={`input w-full p-3 border border-gray-300 rounded-md box-border ${
-            errors.email && "input-error"
+            errors.email ? "input-error" : ""
           }`}
           {...register("email", {
             required: "Please enter your email",
@@ -45,18 +50,18 @@ const RegisterForm = () => {
           </span>
         )}
       </div>
-      <div className="mb-15">
+      <div className="mb-6">
         <label
           htmlFor="password"
-          className="flex items-start font-mono mt-3 block mb-3"
+          className="flex items-start font-mono block mb-2"
         >
           Password:
         </label>
         <input
           type="password"
           id="password"
-          className={`input w-full p-3 border mb-3 border-gray-300 rounded-md box-border ${
-            errors.password && "input-error"
+          className={`input w-full p-3 border border-gray-300 rounded-md box-border ${
+            errors.password ? "input-error" : ""
           }`}
           {...register("password", {
             required: "Please enter your password",
@@ -72,18 +77,18 @@ const RegisterForm = () => {
           </span>
         )}
       </div>
-      <div className="mb-15">
+      <div className="mb-6">
         <label
           htmlFor="confirmpassword"
-          className="flex items-start font-mono mt-3 block mb-3"
+          className="flex items-start font-mono block mb-2"
         >
           Confirm Password:
         </label>
         <input
           type="password"
           id="confirmpassword"
-          className={`input w-full p-3 border mb-5 border-gray-300 rounded-md box-border ${
-            errors.confirmpassword && "input-error"
+          className={`input w-full p-3 border border-gray-300 rounded-md box-border ${
+            errors.confirmpassword ? "input-error" : ""
           }`}
           {...register("confirmpassword", {
             required: "Please re-enter your password",
@@ -91,6 +96,8 @@ const RegisterForm = () => {
               value: 6,
               message: "Password must be at least 6 characters long",
             },
+            validate: (value) =>
+              value === password || "Passwords do not match",
           })}
         />
         {errors.confirmpassword && (
