@@ -1,14 +1,14 @@
 // src/components/Header.jsx
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Header.css"
+import "./Header.css";
 
 const Header = () => {
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const isLoggedIn = localStorage.getItem("token");
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 
@@ -36,7 +36,7 @@ const Header = () => {
             </>
           ) : (
             <>
-            <li className="nav-item">
+              <li className="nav-item">
                 <Link to="/about">
                   <button className="nav-button">About</button>
                 </Link>

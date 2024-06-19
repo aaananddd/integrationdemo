@@ -27,7 +27,7 @@ const LoginForm = () => {
       console.log(response.data);
 
       //Storing the token in localstorage.
-      const { token } = response.data;
+      const {token} = response.data;
       localStorage.setItem("token", token);
 
       Swal.fire("Login Successfull!");
