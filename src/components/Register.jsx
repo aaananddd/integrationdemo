@@ -1,6 +1,9 @@
 // src/components/RegisterForm.jsx
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const {
@@ -9,13 +12,29 @@ const RegisterForm = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
+
+  //Register API
+  const RegisterAPI = async (email, password) => {
+    const userData = {
+      username: email,
+      password: password,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/register",
+        userData
+      );
+      console.log(response.data);
+      Swal.fire("Registered Successfully!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
 
   const onSubmit = (data) => {
-    console.log(data);
-
-
-    localStorage.setItem("registeredEmail",data.email);
-    localStorage.setItem("registeredPassword",data.password);
+    RegisterAPI(data.email, data.password);
   };
 
   const password = watch("password");

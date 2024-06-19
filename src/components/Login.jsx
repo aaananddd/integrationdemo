@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const {
@@ -11,20 +13,33 @@ const LoginForm = () => {
   } = useForm();
   const navigate = useNavigate();
 
-const [loginError, setLoginError] = useState("");
+  //Login API
+  const LoginAPI = async (email, password) => {
+    const userData = {
+      username: email,
+      password: password,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/login",
+        userData
+      );
+      console.log(response.data);
+
+      //Storing the token in localstorage.
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+
+      Swal.fire("Login Successfull!");
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error:", error.message);
+      Swal.fire("Login Failed.");
+    }
+  };
 
   const onSubmit = (data) => {
-    
-    const registeredEmail = localStorage.getItem("registeredEmail");
-    const registeredPassword = localStorage.getItem("registeredPassword");
-
-
-    if (data.email === registeredEmail && data.password === registeredPassword) {
-      localStorage.setItem("isLoggedIn", "true")
-      navigate("/dashboard");
-    }else {
-      alert("Incorrect email or password");
-    }
+    LoginAPI(data.email, data.password);
   };
 
   return (
@@ -35,10 +50,7 @@ const [loginError, setLoginError] = useState("");
       >
         <h2 className="mb-10 font-bold text-3xl text-center">Login</h2>
         <div className="mb-6">
-          <label
-            htmlFor="email"
-            className="block font-mono mb-2"
-          >
+          <label htmlFor="email" className="block font-mono mb-2">
             Email:
           </label>
           <input
@@ -56,16 +68,11 @@ const [loginError, setLoginError] = useState("");
             })}
           />
           {errors.email && (
-            <span className="text-red-500 text-xs">
-              {errors.email.message}
-            </span>
+            <span className="text-red-500 text-xs">{errors.email.message}</span>
           )}
         </div>
         <div className="mb-6">
-          <label
-            htmlFor="password"
-            className="block font-mono mb-2"
-          >
+          <label htmlFor="password" className="block font-mono mb-2">
             Password:
           </label>
           <input
