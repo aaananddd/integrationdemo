@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "additem",
+        path: "items",
         element: <AddItem />,
       },
       {

@@ -14,11 +14,8 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   //Login API
-  const LoginAPI = async (email, password) => {
-    const userData = {
-      username: email,
-      password: password,
-    };
+  const LoginAPI = async (userData) => {
+
     try {
       const response = await axios.post(
         "http://localhost:3000/login",
@@ -38,8 +35,12 @@ const LoginForm = () => {
     }
   };
 
-  const onSubmit = (data) => {
-    LoginAPI(data.email, data.password);
+  const onSubmit = ({email,password}) => {
+    const userData = {
+      username: email,
+      password,
+    };
+    LoginAPI(userData);
   };
 
   return (

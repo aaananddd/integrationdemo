@@ -33,7 +33,7 @@ const Dashboard = () => {
         </div>
 
         {/* Large card below */}
-        <div className="mt-6 bg-slate-200 rounded-lg p-6">
+        <div className=" mt-6 bg-slate-200 rounded-lg p-6">
           <h2 className="text-2xl font-bold mb-4">Main Content</h2>
           <p className="text-gray-700">
             Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -46,6 +46,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <AddItem />
     </div>
   );
 };

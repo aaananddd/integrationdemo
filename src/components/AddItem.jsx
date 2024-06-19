@@ -1,5 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const AddItem = () => {
   const {
@@ -7,8 +9,22 @@ const AddItem = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  //Add item API
+  const AddItemAPI = async (itemDetails) =>{
+    try{
+   
+        const response = await axios.post('http://localhost:3000/items',itemDetails);
+        console.log(response.data);
+        Swal.fire("Item Created");
+    }
+    catch (error) {
+        console.error("Error:",error.message);
+    }
+  }
+
   const onSubmit = (data) => {
-    console.log(data);
+    AddItemAPI(data)
   };
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
