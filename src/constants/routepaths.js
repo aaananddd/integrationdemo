@@ -1,6 +1,6 @@
 export const RoutePath = {
     register: "/register",
     login: "/login",
-    dashboard: "/dashboard"
-    
+    dashboard: "/dashboard",
+    additem: "/additem",
 }

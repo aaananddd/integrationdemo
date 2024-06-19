@@ -8,6 +8,7 @@ import LoginForm from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Header from "./components/header";
 import About from "./components/About";
+import AddItem from "./components/AddItem";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "additem",
+        element: <AddItem />,
       },
       {
         path: "about",

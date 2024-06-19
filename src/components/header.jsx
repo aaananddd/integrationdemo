@@ -47,6 +47,11 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/additem">
+                  <button className="nav-button">Add Item</button>
+                </Link>
+              </li>
+              <li className="nav-item">
                 <button className="nav-button" onClick={handleLogout}>
                   Logout
                 </button>
