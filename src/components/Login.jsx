@@ -15,7 +15,6 @@ const LoginForm = () => {
 
   //Login API
   const LoginAPI = async (userData) => {
-
     try {
       const response = await axios.post(
         "http://localhost:3000/login",
@@ -24,7 +23,7 @@ const LoginForm = () => {
       console.log(response.data);
 
       //Storing the token in localstorage.
-      const {token} = response.data;
+      const { token } = response.data;
       localStorage.setItem("token", token);
 
       Swal.fire("Login Successfull!");
@@ -35,7 +34,7 @@ const LoginForm = () => {
     }
   };
 
-  const onSubmit = ({email,password}) => {
+  const onSubmit = ({ email, password }) => {
     const userData = {
       username: email,
       password,

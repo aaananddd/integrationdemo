@@ -3,8 +3,8 @@ import AddItem from "./AddItem";
 
 const Dashboard = () => {
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="w-3/4 bg-white shadow-lg rounded-lg p-6">
+    <div className="flex  justify-center items-center h-screen bg-gray-100">
+      <div className="w-2/4 bg-white shadow-lg rounded-lg p-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* First card */}
           <div className="bg-slate-200 rounded-lg p-4">
@@ -46,7 +46,9 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <AddItem />
+      <div>
+        <AddItem />
+      </div>
     </div>
   );
 };
