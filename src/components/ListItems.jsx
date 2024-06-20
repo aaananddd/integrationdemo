@@ -26,8 +26,9 @@ const ListItems = () => {
     <div className="">
       {items.map((item) => (
         <div>
-          <p>{item.name}</p>
-          <p>{item.description}</p>
+          <p>
+            {item.name} - {item.description}
+          </p>
         </div>
       ))}
     </div>
