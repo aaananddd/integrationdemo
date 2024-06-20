@@ -50,14 +50,17 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <div className="flex flex-row p-10 space-x-8">
 
-      <div className="w-full md:w-3/4 lg:w-2/3 bg-gray-100 p-4 rounded-lg shadow-lg my-6">
+      <div className=" w-full  md:w-3/4 lg:w-2/3 bg-gray-100 p-4 rounded-lg shadow-lg my-6">
         <AddItem />
       </div>
 
       <div className="w-full md:w-3/4 lg:w-2/3 bg-gray-100 p-4 rounded-lg shadow-lg my-6">
         <ListItems />
       </div>
+      </div>
+
     </div>
   );
 };
