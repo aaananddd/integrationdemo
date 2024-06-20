@@ -25,9 +25,9 @@ const ListItems = () => {
   return (
     <div className="">
       {items.map((item) => (
-        <div>
+        <div className="mb-4">
           <p>
-            {item.name} - {item.description}
+          <span className="font-bold">{item.name}</span>  - {item.description}
           </p>
         </div>
       ))}
