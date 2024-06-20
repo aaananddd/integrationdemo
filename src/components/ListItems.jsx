@@ -23,7 +23,7 @@ const ListItems = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       {items.map((item) => (
         <div>
           <p>{item.name}</p>

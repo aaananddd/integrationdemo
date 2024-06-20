@@ -39,21 +39,21 @@ const AddItem = () => {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="itemName"
+              htmlFor="name"
             >
               Item Name
             </label>
             <input
               type="text"
               id="itemName"
-              name="itemName"
-              {...register("itemName", { required: "Item name is required" })}
+              name="name"
+              {...register("name", { required: "Item name is required" })}
               className="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:shadow-outline"
               placeholder="Enter item name"
             />
-            {errors.itemName && (
+            {errors.name && (
               <p className="text-red-500 text-xs italic">
-                {errors.itemName.message}
+                {errors.name.message}
               </p>
             )}
           </div>
