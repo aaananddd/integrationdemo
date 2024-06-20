@@ -24,10 +24,11 @@ const ListItems = () => {
 
   return (
     <div className="">
+       <h2 className="text-2xl justify-center flex font-medium mb-6">Items</h2>
       {items.map((item) => (
         <div className="mb-4">
           <p>
-          <span className="font-bold">{item.name}</span>  - {item.description}
+          <span className="font-bold">{item.name}</span>  - <span className="font-mono">{item.description}</span> 
           </p>
         </div>
       ))}
