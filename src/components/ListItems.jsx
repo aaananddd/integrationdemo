@@ -1,9 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-const ListItems = () => {
-  const [items, setItems] = useState([]);
-
+const ListItems = ({ items, setItems }) => {
   const getItemList = async () => {
     try {
       const { data } = await axios.get("http://localhost:3000/items", {
@@ -23,13 +21,15 @@ const ListItems = () => {
   }, []);
 
   return (
-    <div className="">
-       <h2 className="text-2xl justify-center flex font-medium mb-6">Items</h2>
-      {items.map((item) => (
-        <div className="mb-4">
-          <p>
-          <span className="font-bold">{item.name}</span>  - <span className="font-mono">{item.description}</span> 
-          </p>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {items.map((item, index) => (
+        <div key={index} className="bg-slate-200 rounded-lg">
+          <div className="bg-blue-500 text-white rounded-t-lg p-2">
+            <h3 className="text-md font-semibold">{item.name}</h3>
+          </div>
+          <div className="p-4">
+            <p className="text-black">{item.description}</p>
+          </div>
         </div>
       ))}
     </div>
