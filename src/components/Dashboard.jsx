@@ -9,8 +9,12 @@ const Dashboard = () => {
     setItems([...items, item]);
   };
 
+  const deleteItem = (itemId) => {
+    setItems(items.filter(item => item.id !== itemId));
+  };
+
   return (
-    <div className="flex flex-col items-center p-4 w-full ">
+    <div className="flex flex-col items-center p-4">
       {/* Create Item Form */}
       <div className="w-full md:w-3/4 lg:w-2/3 my-6">
         <AddItem addItem={addItem} />
@@ -18,7 +22,7 @@ const Dashboard = () => {
 
       {/* List Items */}
       <div className="w-full md:w-3/4 lg:w-2/3 my-6">
-        <ListItems items={items} setItems={setItems} />
+        <ListItems items={items} setItems={setItems} deleteItem={deleteItem} />
       </div>
     </div>
   );
